@@ -3,7 +3,10 @@
 #include <string>
 
 string check_str;
+string check_last;
 double an_argument;
+double an_last_arg;
+
 //Валидация вводимых значений, провеерка на принадлежность к вещественным числам
 bool isCorrectNum(string check_string)
 {
@@ -66,16 +69,10 @@ bool isCorrectNum(string check_string)
 	}
 //функция поиска точки на графике
 void find_y() {
-	//Ввод значения с клавиатуры
-	
-	cout << "Enter 'x':\n";
-	cin >> check_str;
 
-	if (isCorrectNum(check_str) == true)
-	{
-		an_argument = std::stod(check_str.substr());
+	
 		//определение принадлежности графику введенного значения условными операторами
-		if (an_argument >= -10 && an_argument <= -6)
+		if (an_argument >= -10 && an_argument < -6)
 		{
 			//уравнение полукруга y = -1 * sqrt(R^2 - x^2)
 			//r = 2, центр окружности (-8; 2)
@@ -86,40 +83,59 @@ void find_y() {
 			double pre_compute = (4 - pow((an_argument + 8), 2));
 			double func_y = -sqrt(pre_compute) + 2;
 			cout << "Y:\n" << func_y << "\n";
-			find_y();
+			
 
 		}
 		if (an_argument >= -6 && an_argument <= -4)
 		{
 			//на графике фнукция параллельна оси Ox
 			cout << 2<<"\n";
-			find_y();
+			
 		}
 		if (an_argument == 0) {
-			cout << 0 << "\n"; find_y();//нижнее ветвление даёт минус ноль на вывод, мне это не понравилось, поэтому такая строчка заимела место быть.
+			cout << 0 << "\n"; //нижнее ветвление даёт минус ноль на вывод, мне это не понравилось, поэтому такая строчка заимела место быть.
 		}
-		if (an_argument >= -4 && an_argument <= 2)
+		if (an_argument = -4 && an_argument <= 2)
 		{
 			//k = -1/2 , функция y = kx + m
 			double  result = -an_argument / 2.;
 			
 			cout << result << "\n";
-			find_y();
+			
 		}
 
-		if (an_argument >= 2)
+		if (an_argument > 2)
 		{
 			//функция y = kx + m k = 1 m = -3
 			double  result = an_argument - 3.;
 			cout << result << "\n";
-			find_y();
+			
 		}
-		if (an_argument <= -10)
+		if (an_argument < -10)
 		{
 			//проверка выходим ли за значения Х, установленные заданием
-			cout << "ERROR!\nTry other one\n";
-			find_y();
+			cout << "Out of func!\n";
+			
 
+		}
+	
+}
+
+void cyclish_count()
+{
+	cout << "Enter first num \n";
+	cin >> check_str;
+	cout << "Enter last num \n";
+	cin >> check_last;
+
+	if (isCorrectNum(check_str) == true && isCorrectNum(check_last) == true)
+	{
+		an_last_arg = std::stod(check_last.substr());
+		an_argument = std::stod(check_str.substr());
+		for(int i = an_argument; i++; an_argument<an_last_arg)
+		{
+			cout << an_argument;
+			
 		}
 	}
 	else
@@ -127,9 +143,12 @@ void find_y() {
 		cout << "Incorrect input\n";
 		find_y();
 	}
+
+	
 }
+
 
 int main()
 {
-	find_y();
+	cyclish_count();
 }
