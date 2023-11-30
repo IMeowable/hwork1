@@ -1,9 +1,11 @@
 # hwork1
 
-There is first labwork on algorithmization for DONSTU.
+Первая лабораторная работа.
+Программа находит значения функции y, от вводимого значения x. (График 10).
 
-The purpose of the work:
+Структура программы:
 
-A console application that determines the value of a function on a graph from an abscissa. 
-The graphs are presented by the publisher.
-Additionally, I made validation of the entered characters so that only a real number could be entered
+функция IsDouble - принимает значение с клавиатуры и возвращает true, если ввод соответсвтует записи действительного числа и устанавливает значение переменной an_argument(соотв. иксам)
+функция find_y - принимает переменную an_argument, конструкции if - принадлежность к отрезку графика, затем вывод в консоль полученного значения.
+
+main - Если IsDouble true, выполеняется find_y(an_argument). Конструкция помещена в цикл while(1) для удобства проверки работы программы.
